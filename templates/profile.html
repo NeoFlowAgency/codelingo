@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="space-y-4">
+  <h1 class="text-xl font-bold">Mon profil</h1>
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+    <p>Email: <span id="profileEmail"></span></p>
+    <p>XP total: <span id="profileXP"></span></p>
+    <p>Streak: <span id="profileStreak"></span> jours</p>
+  </div>
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+    <h2 class="font-semibold mb-2">Badges</h2>
+    <div id="profileBadges" class="flex flex-wrap gap-2"></div>
+  </div>
+</section>
+<script>initProfile()</script>
+{% endblock %}
