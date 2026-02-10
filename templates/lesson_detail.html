@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="space-y-4" data-slug="{{ slug }}" id="lessonDetail">
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+    <h1 id="lessonTitle" class="text-xl font-bold"></h1>
+    <p id="lessonContent" class="text-slate-200"></p>
+    <pre id="lessonExample" class="bg-slate-800 p-3 rounded text-sm overflow-auto"></pre>
+  </div>
+
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
+    <h2 class="font-semibold" id="exerciseTitle"></h2>
+    <p id="exercisePrompt" class="text-slate-300 text-sm"></p>
+    <textarea id="codeInput" class="w-full h-56 bg-slate-800 rounded p-3 font-mono text-sm"></textarea>
+    <button onclick="submitExercise()" class="bg-emerald-500 text-slate-950 font-semibold px-4 py-2 rounded">Valider</button>
+    <div id="exerciseFeedback" class="text-sm"></div>
+    <pre id="exerciseOutput" class="bg-slate-800 p-3 rounded text-sm overflow-auto"></pre>
+  </div>
+</section>
+<script>initLessonDetail()</script>
+{% endblock %}
