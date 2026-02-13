@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="panel bordered" style="margin-top:30px;">
+  <h2>Bienvenue 👋</h2>
+  <p>Personnalise ton profil pour démarrer le parcours Python.</p>
+  <input id="displayName" class="input" placeholder="Pseudo" />
+  <select id="goal" class="select">
+    <option value="career">Trouver un job tech</option>
+    <option value="school">Réussir mes cours</option>
+    <option value="hobby">Coder pour le fun</option>
+  </select>
+  <button class="cta" onclick="completeOnboarding()">Continuer</button>
+  <p id="onboardingMsg" class="hint"></p>
+</div>
+{% endblock %}

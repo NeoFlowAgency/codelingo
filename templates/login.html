@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - CodeLingo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
-  <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
-    <h1 class="text-2xl font-bold text-emerald-400">Connexion CodeLingo</h1>
-    <p class="text-sm text-slate-300">Crée un compte ou connecte-toi pour suivre ta progression.</p>
-    <input id="email" type="email" placeholder="Email" class="w-full bg-slate-800 rounded p-2" />
-    <input id="password" type="password" placeholder="Mot de passe" class="w-full bg-slate-800 rounded p-2" />
-    <div class="grid grid-cols-2 gap-2">
-      <button onclick="signup()" class="bg-emerald-500 rounded p-2 text-slate-950 font-semibold">Signup</button>
-      <button onclick="login()" class="bg-sky-500 rounded p-2 text-slate-950 font-semibold">Login</button>
-    </div>
-    <p id="authMsg" class="text-sm"></p>
+{% extends 'base.html' %}
+{% block content %}
+<div style="padding-top:36px; text-align:center;">
+  <div style="margin:0 auto; width:230px;">
+    <div class="avatar" style="width:230px;height:230px;margin:0 auto;"></div>
   </div>
-  <script src="/static/js/app.js"></script>
-</body>
-</html>
+  <div class="logo-text">CodeLingo</div>
+</div>
+<div class="auth-card">
+  <input id="email" class="input" placeholder="Email" type="email" />
+  <input id="password" class="input" placeholder="Mot de passe" type="password" />
+  <button class="cta" onclick="signup()">Créer un compte</button>
+  <button class="cta secondary" onclick="login()">Connexion</button>
+  <p class="hint">Après inscription, onboarding obligatoire.</p>
+  <p id="authMsg" class="hint"></p>
+</div>
+{% endblock %}
