@@ -1,13 +1,17 @@
 from functools import lru_cache
-from pydantic import BaseModel
 import os
+
+from pydantic import BaseModel
 
 
 class Settings(BaseModel):
+    app_name: str = "CodeLingo"
+    app_env: str = os.getenv("APP_ENV", "development")
+    app_secret: str = os.getenv("APP_SECRET", "dev-secret")
+
     supabase_url: str = os.getenv("SUPABASE_URL", "")
     supabase_anon_key: str = os.getenv("SUPABASE_ANON_KEY", "")
     supabase_service_role_key: str = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")
-    app_secret: str = os.getenv("APP_SECRET", "dev-secret")
 
     @property
     def supabase_enabled(self) -> bool:

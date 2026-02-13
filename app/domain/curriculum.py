@@ -1,0 +1,55 @@
+MODULES = [
+    {"id": "variables", "title": "Variables", "description": "Stocke des données simplement.", "order_index": 1},
+    {"id": "conditions", "title": "Conditions", "description": "Prends des décisions avec if/else.", "order_index": 2},
+    {"id": "loops", "title": "Boucles", "description": "Répète une action efficacement.", "order_index": 3},
+    {"id": "lists", "title": "Listes", "description": "Manipule des collections.", "order_index": 4},
+    {"id": "functions", "title": "Fonctions", "description": "Réutilise ton code.", "order_index": 5},
+]
+
+LESSONS = [
+    {
+        "id": "variables-1",
+        "module_id": "variables",
+        "title": "Créer des variables",
+        "explanation": "Une variable associe un nom à une valeur.",
+        "code_example": "age = 18\nnom = 'Ada'\nprint(age, nom)",
+        "quiz": {"question": "Quel symbole assigne une valeur ?", "options": ["=", "==", ":=", "=>"], "answer": "="},
+        "exercise": {"prompt": "Déclare x=7, y=5 puis affiche leur somme.", "starter_code": "x = 7\ny = 5\n", "expected_output": "12", "xp": 25},
+    },
+    {
+        "id": "conditions-1",
+        "module_id": "conditions",
+        "title": "Premiers if/else",
+        "explanation": "if exécute un bloc si la condition est vraie.",
+        "code_example": "n = 9\nif n % 2 == 0:\n    print('pair')\nelse:\n    print('impair')",
+        "quiz": {"question": "Quel mot-clé gère le cas alternatif ?", "options": ["elif", "else", "except", "return"], "answer": "else"},
+        "exercise": {"prompt": "Définis n=3 et affiche 'petit' si n<5 sinon 'grand'.", "starter_code": "n = 3\n", "expected_output": "petit", "xp": 25},
+    },
+    {
+        "id": "loops-1",
+        "module_id": "loops",
+        "title": "Boucle for",
+        "explanation": "for parcourt une séquence de valeurs.",
+        "code_example": "for i in range(1, 4):\n    print(i)",
+        "quiz": {"question": "range(1,4) produit ?", "options": ["1,2,3", "1,2,3,4", "0,1,2,3", "4,3,2,1"], "answer": "1,2,3"},
+        "exercise": {"prompt": "Affiche les nombres de 1 à 5 chacun sur une ligne.", "starter_code": "", "expected_output": "1\n2\n3\n4\n5", "xp": 30},
+    },
+    {
+        "id": "lists-1",
+        "module_id": "lists",
+        "title": "Manipuler les listes",
+        "explanation": "Une liste est ordonnée et modifiable.",
+        "code_example": "fruits = ['pomme', 'banane']\nfruits.append('kiwi')\nprint(fruits)",
+        "quiz": {"question": "Quelle méthode ajoute un élément ?", "options": ["add", "push", "append", "insertLast"], "answer": "append"},
+        "exercise": {"prompt": "Crée [1,2,3], ajoute 4 puis affiche la liste.", "starter_code": "", "expected_output": "[1, 2, 3, 4]", "xp": 30},
+    },
+    {
+        "id": "functions-1",
+        "module_id": "functions",
+        "title": "Créer une fonction",
+        "explanation": "Une fonction encapsule du comportement réutilisable.",
+        "code_example": "def carre(n):\n    return n * n\nprint(carre(6))",
+        "quiz": {"question": "Quel mot-clé crée une fonction ?", "options": ["function", "def", "fn", "lambda"], "answer": "def"},
+        "exercise": {"prompt": "Crée carre(n) qui retourne n*n puis affiche carre(6).", "starter_code": "def carre(n):\n    # ton code\n\n", "expected_output": "36", "xp": 40},
+    },
+]

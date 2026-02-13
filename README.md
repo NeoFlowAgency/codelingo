@@ -1,51 +1,60 @@
-# CodeLingo V1
+# CodeLingo (Rebuild)
 
-Application web **mobile-first** pour apprendre Python débutant (style Duolingo du code).
+Application SaaS mobile-first d'apprentissage Python débutant, style "Duolingo du code", avec Supabase Auth + Supabase PostgreSQL.
 
 ## Stack
-- Frontend: HTML + TailwindCSS + JavaScript
-- Backend: FastAPI (Python)
-- Auth + Base de données: Supabase (PostgreSQL)
-- Sandbox code: exécution Python côté serveur avec timeout
+- **Frontend**: Jinja templates + Vanilla JS + CSS custom (mobile-first)
+- **Backend API**: FastAPI (architecture en couches)
+- **Auth**: Supabase Auth (email/password)
+- **DB**: Supabase PostgreSQL
+- **Correction auto**: Sandbox Python backend avec blocage d'instructions dangereuses + timeout
 
-## Structure du projet
-- `app/main.py` : routes pages + API
-- `app/services/` : contenu leçons, gamification, sandbox
-- `app/supabase_client.py` : accès Supabase + mode démo
-- `templates/` : pages HTML responsive
-- `static/js/app.js` : logique frontend
-- `sql/schema.sql` : tables et policies Supabase
-
-## Installation
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+## Architecture
+```
+app/
+  api/          # Routes API + dépendances auth
+  core/         # Configuration
+  db/           # Intégration Supabase + mode démo
+  domain/       # Données métier (modules/leçons)
+  services/     # Moteur d'exercice + progression
+  main.py       # Entrée FastAPI
+static/
+  css/app.css
+  js/app.js
+templates/
+  *.html
+sql/schema.sql  # SQL complet Supabase
 ```
 
-## Configuration
-1. Copier `.env.example` vers `.env`
-2. Renseigner:
-   - `SUPABASE_URL`
-   - `SUPABASE_ANON_KEY`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-3. Exécuter `sql/schema.sql` dans l’éditeur SQL Supabase
+## Fonctionnalités implémentées
+- Signup / login Supabase + session token côté client
+- Onboarding post-inscription
+- Parcours Python avec 5 modules obligatoires
+- Leçon = explication + exemple + quiz + exercice auto-corrigé
+- Progression: XP, niveau, streak, badges, historique XP
+- Dashboard: progression globale, streak, XP, leçons terminées
+- Profil: stats perso + historique
 
-## Lancer
+## Installation locale
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+```
+
+## Configuration Supabase
+1. Créer un projet Supabase.
+2. Exécuter `sql/schema.sql` dans SQL Editor.
+3. Remplir `.env` avec `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`.
+
+## Lancer l'application
 ```bash
 uvicorn app.main:app --reload
 ```
-Puis ouvrir `http://127.0.0.1:8000/login`.
+Puis ouvrir `http://127.0.0.1:8000/app/login`.
 
-## Mode démo
-Sans configuration Supabase, l’app fonctionne en mode démo local (stockage mémoire + token local).
-
-## Git (commit + push)
-Commit utilisé:
-```bash
-git commit -m "Ajout de l'app CodeLingo V1 générée par Codex"
-```
-Commande de push à exécuter:
-```bash
-git push origin main
-```
+## Déploiement
+- API FastAPI: Railway / Fly / Render.
+- Variables d'environnement identiques à `.env.example`.
+- Supabase reste le backend managé pour Auth + DB.
